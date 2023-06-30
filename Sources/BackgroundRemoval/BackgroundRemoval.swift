@@ -31,11 +31,11 @@ public struct BackgroundRemoval {
         let scaledImage = image.scaled(to: sz, scalingMode: .aspectFit)
 
         /// resize image to 320 * 320 before sending it to the model
-        let resize =  scaledImage.resizeImage(width: 320, height: 320)
+//        let resize =  scaledImage.resizeImage(width: 320, height: 320)
         
         /// init model and get result
         let model = try? LaLabsu2netp.init()
-        let result = try? model?.prediction(in_0: buffer(from: resize)!)
+        let result = try? model?.prediction(in_0: buffer(from: scaledImage)!)
         let out = UIImage(pixelBuffer: result!.out_p1)
         
         /// scale the image again to the longest dimension in the input image,
